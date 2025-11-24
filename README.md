@@ -147,22 +147,19 @@ def calculate_theta(difficulties, response_pattern, num_obs=-1):
 
 ### 2. DDS-MAE: Dynamic Data Selection (Section 4.3-4.4)
 
-DDS-MAE selects training examples where difficulty ≤ model ability:
+DDS-MAE selects training examples based on the model's current ability:
 
 ```python
-# From build_features.py
-def get_epoch_training_data(difficulty, theta, strategy='theta'):
-    """Select examples where difficulty b_i <= ability theta"""
-    if strategy == 'theta':
-        selected = [i for i in range(len(difficulty))
-                    if difficulty[i] <= theta + offset]
-    return selected
+# From build_features.py - selecting examples within ability range
+train_idx = [i for i in range(len(input_ids))
+             if (theta_hat + lower_offset) <= difficulty[i] <= (theta_hat + upper_offset)]
 ```
 
 **Key features:**
-- Ability estimation via MLE (Nelder-Mead)
+- Ability estimation via MLE (Nelder-Mead optimization)
 - Dynamic threshold: increment θ by 0.1 if stagnant for 2 epochs
 - Sampling 1000 examples for efficiency on large datasets
+- Supports both easy-to-hard (`easiest`) and hard-to-easy (`hardest`) orderings
 
 ## Supported Models
 
@@ -207,13 +204,13 @@ cd PUDF_GLUE && python PUDF_glue_DebertaV3.py
 ```bash
 cd ablation_study
 
-# Swap difficulty measures
-python qwen_glue_ablation.py --difficulty sentence_length --scheduler pudf_theta
-python qwen_glue_ablation.py --difficulty word_rarity --scheduler pudf_theta
+# Swap difficulty measures (use IRT scheduler with heuristic difficulties)
+python qwen_glue_ablation.py --difficulty_measurer sentence_length --training_scheduler pudf_theta
+python qwen_glue_ablation.py --difficulty_measurer word_rarity --training_scheduler pudf_theta
 
-# Swap training schedulers
-python qwen_glue_ablation.py --difficulty irt --scheduler linear
-python qwen_glue_ablation.py --difficulty irt --scheduler root
+# Swap training schedulers (use heuristic schedulers with IRT difficulty)
+python qwen_glue_ablation.py --difficulty_measurer pudf_irt --training_scheduler linear
+python qwen_glue_ablation.py --difficulty_measurer pudf_irt --training_scheduler root
 ```
 
 ## Generating IRT Difficulties
