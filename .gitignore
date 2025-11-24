@@ -22,6 +22,14 @@
 # Requirements
 !requirements.txt
 
+# Documentation
+!README.md
+!LICENSE
+
+# Assets folder for figures (if added)
+!assets/
+!assets/**
+
 # Allow traversing directories
 !*/
 
