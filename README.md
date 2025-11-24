@@ -15,10 +15,13 @@ PUDF (Probabilistic Utility-based Difficulty Function) is a unified curriculum l
 
 Unlike traditional curriculum learning methods that use fixed difficulty measures or schedules, PUDF adapts both difficulty estimation and data selection throughout training.
 
-<!--
 ## Framework
-![PUDF Framework](assets/pudf_framework.png)
--->
+
+<p align="center">
+  <img src="workflow_fig_PUDF_v3.png" alt="PUDF Framework" width="800">
+</p>
+
+**Figure:** Workflow of PUDF. The process consists of two main steps: 1) IRT-AC for the Difficulty Measurement (DM), 2) DDS-MAE and LLM Fine-tuning for the Training Scheduler (TS).
 
 ## Installation
 

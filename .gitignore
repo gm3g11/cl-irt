@@ -26,6 +26,10 @@
 !README.md
 !LICENSE
 
+# Figures
+!*.png
+!workflow_fig_PUDF_v3.png
+
 # Assets folder for figures (if added)
 !assets/
 !assets/**
