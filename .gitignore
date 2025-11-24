@@ -1,0 +1,156 @@
+# ===========================================
+# PUDF Curriculum Learning - .gitignore
+# Repository: nd-ball/cl-irt
+# ===========================================
+
+# Ignore everything by default (whitelist approach)
+*
+
+# ===========================================
+# INCLUDE: Essential source files
+# ===========================================
+
+# Python source files
+!*.py
+
+# Shell scripts for job submission
+!*.sh
+
+# Environment configuration
+!cl.env
+
+# Requirements
+!requirements.txt
+
+# Allow traversing directories
+!*/
+
+# Include .gitignore itself
+!.gitignore
+
+# ===========================================
+# EXCLUDE: Directories not needed for paper
+# ===========================================
+
+# Benchmark CL methods (excluded per user request)
+self_paced_GLUE/
+self_paced_ag_news/
+self_paced_MedQA/
+rl_teacher_ag_news/
+rl_teacher_MedQA/
+transfer_teacher_ag_news/
+transfer_teacher_MedQA/
+benchmark_CL_GLUE/
+heuristic_spl_tt_rl_gsm8k/
+
+# StackOverflow dataset (not in paper)
+baseline_stackoverflow/
+
+# ===========================================
+# EXCLUDE: Specific Python files (cruft)
+# ===========================================
+
+# T5 model files (not core model)
+**/*T5*.py
+**/*t5*.py
+**/PUDF_glue_T5.py
+**/PUDF_t5_*.py
+
+# Development/debugging files
+**/case_study.py
+**/read_jason.py
+**/data_inspect.py
+**/analyze_data.py
+**/find_best_*.py
+**/convert_*.py
+**/*_backup.py
+**/count_*.py
+
+# Root level test files
+mixtral.py
+
+# Mixed precision variant
+baseline_GLUE/baseline_GLUE_Llama3.1-8B_mix_precision.py
+
+# Accelerate variants
+**/*_accelerate.py
+**/*_acc.py
+
+# QLoRA variants that are duplicates
+**/gsm8k_pudf_qlora.py
+**/qwen_config.py
+
+# ===========================================
+# EXCLUDE: Generated/temporary files
+# ===========================================
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# HPC job logs
+*.o[0-9]*
+
+# Training logs
+*.log
+
+# Lock files
+*.lock
+
+# Backup files
+*.bak
+*.tmp
+
+# Backup archive
+code_backup.tar.gz
+
+# Checkpoint directories (too large)
+checkpoint-*/
+
+# Model weight files (too large for git)
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.model
+
+# Results and output directories
+**/training_output/
+**/training_checkpoints/
+**/best_model*/
+**/final_adapter/
+**/best_pudf_adapter/
+**/best_pudf_qlora_adapter/
+
+# IDE/Editor files
+.claude/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Empty placeholder
+.empty
+
+# ===========================================
+# EXCLUDE: Large data files
+# ===========================================
+
+# JSON data files (response patterns, results)
+# Keep config JSONs but exclude large data
+**/merged_jsonlines_output/
+**/GLUE_output_difficulty_jsonlines/
+*.jsonlines
+
+# CSV data
+*.csv
+
+# HuggingFace cache (never commit)
+huggingface_cache/
+.cache/
