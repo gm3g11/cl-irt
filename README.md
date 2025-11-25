@@ -8,10 +8,11 @@ Official implementation of **"A Psychology-based Unified Dynamic Framework for C
 
 ## Overview
 
-PUDF (Probabilistic Utility-based Difficulty Function) is a unified curriculum learning framework that combines:
+PUDF (A Psychology-based Unified Dynamic
+Framework for Curriculum Learning) is a unified curriculum learning framework that combines:
 
 - **IRT-AC (Item Response Theory with Artificial Crowd)**: Estimates example difficulty using an artificial crowd of language models and variational inference IRT
-- **DDS-MAE (Dynamic Data Selection with Model Ability Estimation)**: Dynamically selects training examples based on the model's evolving ability
+- **DDS-MAE (Dynamic Data Selection via Model Ability Estimation)**: Dynamically selects training examples based on the model's evolving ability
 
 Unlike traditional curriculum learning methods that use fixed difficulty measures or schedules, PUDF adapts both difficulty estimation and data selection throughout training.
 
@@ -179,7 +180,7 @@ train_idx = [i for i in range(len(input_ids))
 |---------|------|------------|--------|
 | GLUE (6 tasks) | NLU | 3.3k - 353k | 2-3 |
 | MedQA-USMLE | Medical QA | 9.2k | 4 |
-| AG News | Classification | 120k | 4 |
+| AG News | Classification | ~995k | 14 |
 | GSM8K | Math Reasoning | 7.5k | Generation |
 
 ### Pre-computed Difficulty Values
