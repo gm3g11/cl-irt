@@ -242,11 +242,11 @@ python extract_irt_results.py output_dir/ 1pl
 If you use this code, please cite our paper:
 
 ```bibtex
-@article{meng2024psychology,
+@article{meng2025psychology,
   title={A Psychology-based Unified Dynamic Framework for Curriculum Learning},
   author={Meng, Guangyu and Zeng, Qinkai and Lalor, John P. and Yu, Hong},
   journal={Computational Linguistics},
-  year={2024},
+  year={2025},
   publisher={MIT Press},
   url={https://arxiv.org/abs/2408.05326}
 }
