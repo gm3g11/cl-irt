@@ -8,8 +8,7 @@ Official implementation of **"A Psychology-based Unified Dynamic Framework for C
 
 ## Overview
 
-PUDF (A Psychology-based Unified Dynamic
-Framework for Curriculum Learning) is a unified curriculum learning framework that combines:
+PUDF is a unified curriculum learning framework that combines:
 
 - **IRT-AC (Item Response Theory with Artificial Crowd)**: Estimates example difficulty using an artificial crowd of language models and variational inference IRT
 - **DDS-MAE (Dynamic Data Selection via Model Ability Estimation)**: Dynamically selects training examples based on the model's evolving ability
