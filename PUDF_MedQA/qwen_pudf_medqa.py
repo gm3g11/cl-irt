@@ -196,7 +196,7 @@ ANSWER_MAP_KEYS = ["A", "B", "C", "D"]
 NUM_CHOICES_MC = len(ANSWER_MAP_KEYS)
 max_new_tokens_for_choice_pred = 3  # Increased slightly to allow for space + letter + EOS if needed by tokenizer
 
-DIFFICULTY_FILE_PATH = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/MeD_QA/merged_jsonlines_output/test-1pl/best_parameters.json"
+DIFFICULTY_FILE_PATH = MEDQA_DIFFICULTY_FILE
 DIFFICULTY_JSON_KEY = "diff"
 INITIAL_CAPACITY_THETA = 0.0
 NUM_OBS_THETA_ESTIMATION = -1  # Use all valid observations

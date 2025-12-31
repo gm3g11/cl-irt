@@ -685,9 +685,9 @@ def run_ablations():
                         choices=['linear', 'root', 'pudf_theta', 'baseline_sched'])
     parser.add_argument('--model_name', type=str, default="Qwen/Qwen2.5-7B")
     parser.add_argument('--diff_dir', type=str,
-                        default="/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/GLUE_output_difficulty_jsonlines",
+                        default=GLUE_DIFFICULTY_DIR,
                         help="Base directory for task-specific IRT difficulty files. Expected: diff_dir/task-1pl/best_parameters.json")
-    parser.add_argument('--cache_dir', type=str, default="/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache",
+    parser.add_argument('--cache_dir', type=str, default=HF_HOME,
                         help="Hugging Face cache directory (sets HF_HOME).")
     parser.add_argument('--output_dir_root', type=str, default="./my_qwen_glue_ablations_output")
     parser.add_argument('--num_epochs', type=int, default=10)

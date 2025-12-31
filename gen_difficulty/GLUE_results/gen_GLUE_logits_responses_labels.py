@@ -15,7 +15,7 @@ BASE_RESULTS_DIR = "."  # Current directory, change if task folders are elsewher
 MERGED_OUTPUT_DIR = "./glue_merged_outputs"
 os.makedirs(MERGED_OUTPUT_DIR, exist_ok=True)
 
-HF_HOME_DEFAULT = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+HF_HOME_DEFAULT = HF_HOME
 RANDOM_SEED = 63
 
 

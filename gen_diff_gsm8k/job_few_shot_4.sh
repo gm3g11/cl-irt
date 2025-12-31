@@ -2,7 +2,7 @@
 #$ -q gpu@@csecri-v100
 #$ -l gpu_card=1
 #$ -pe smp 8
-#$ -M gmeng@nd.edu
+#$ -M YOUR_EMAIL@example.com
 #$ -m abe
 #$ -N gsm8k_few_shot_4
 

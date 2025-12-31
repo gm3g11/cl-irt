@@ -27,10 +27,10 @@ from huggingface_hub import login, whoami
 from math import ceil
 
 # --- Environment and Cache Setup ---
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
-os.environ["HF_HOME"] = HF_HOME
-os.environ["TRANSFORMERS_CACHE"] = os.path.join(HF_HOME, "models")
-os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 os.makedirs(os.environ["TRANSFORMERS_CACHE"], exist_ok=True)
@@ -539,7 +539,7 @@ def run():
     # --- Configuration ---
     config = types.SimpleNamespace()
     config.model_name = "meta-llama/Meta-Llama-3.1-8B"
-    config.diff_dir = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/GLUE_output_difficulty_jsonlines"
+    config.diff_dir = GLUE_DIFFICULTY_DIR
     config.cache_dir = os.environ.get("TRANSFORMERS_CACHE", "./hf_cache/models")
     config.num_epochs = 20
     config.learning_rate = 1e-5 # Adjusted LR for Llama

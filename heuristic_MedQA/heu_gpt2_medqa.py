@@ -31,7 +31,7 @@ import transformers as hf_transformers  # For logging verbosity
 
 # ----- Environment Setup -----
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-HF_HOME_SPECIFIED = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"  # User specific
+HF_HOME_SPECIFIED = HF_HOME  # User specific
 if os.path.exists(HF_HOME_SPECIFIED) and os.path.isdir(HF_HOME_SPECIFIED):
     HF_HOME = HF_HOME_SPECIFIED
 else:

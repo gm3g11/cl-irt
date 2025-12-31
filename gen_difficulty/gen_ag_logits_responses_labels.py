@@ -11,7 +11,10 @@ DATASET_ID = "contemmcm/ag_news"
 RANDOM_SEED = 63  # From your reference script
 
 # --- Environment Setup (Minimal for this script's needs) ---
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"  # From your reference
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE  # From your reference
 HF_DATASETS_CACHE = os.path.join(HF_HOME, "datasets")
 os.environ["HF_HOME"] = HF_HOME  # Set HF_HOME for datasets to use
 os.environ["HF_DATASETS_CACHE"] = HF_DATASETS_CACHE

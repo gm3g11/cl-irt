@@ -62,10 +62,10 @@ difficulty_measures_to_run = ['sentence_length', 'word_rarity']
 schedulers_to_run = ['linear', 'root']
 
 # --- Environment Setup (Run once) ---
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
-os.environ["HF_HOME"] = HF_HOME
-os.environ["TRANSFORMERS_CACHE"] = os.path.join(HF_HOME, "models")
-os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True" # Good practice
 os.makedirs(os.environ["TRANSFORMERS_CACHE"], exist_ok=True)

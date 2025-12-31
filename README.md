@@ -51,11 +51,33 @@ pip install bitsandbytes>=0.41.0
 
 ### Environment Configuration
 
-Each directory contains a `cl.env` file for HPC job submission. Update the HuggingFace cache path:
+Before running the code, update the paths in **`config.py`** (located in the repository root):
+
+```python
+# config.py - Update these paths to match your environment
+
+# HuggingFace cache directory for storing downloaded models and datasets
+# Example: HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+HF_HOME = "/path/to/your/huggingface_cache"
+
+# Directory containing IRT difficulty files for GLUE tasks
+# Example: GLUE_DIFFICULTY_DIR = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/GLUE_output_difficulty_jsonlines"
+GLUE_DIFFICULTY_DIR = "/path/to/your/gen_difficulty/GLUE_output_difficulty_jsonlines"
+
+# Path to MedQA IRT difficulty file (best_parameters.json)
+# Example: MEDQA_DIFFICULTY_FILE = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/MeD_QA/merged_jsonlines_output/test-1pl/best_parameters.json"
+MEDQA_DIFFICULTY_FILE = "/path/to/your/gen_difficulty/MeD_QA/merged_jsonlines_output/test-1pl/best_parameters.json"
+
+# Base output directory for training results (optional)
+# Example: OUTPUT_BASE_DIR = "/afs/crc/group/ball_lab/gmeng_cl/cl_new"
+OUTPUT_BASE_DIR = "/path/to/your/output_directory"
+```
+
+#### HPC Job Scripts (optional)
+If using the provided shell scripts for HPC job submission, update the email address in `.sh` files:
 
 ```bash
-# In cl.env files, update this path to your own:
-export HF_HOME="/path/to/your/huggingface_cache"
+#$ -M YOUR_EMAIL@example.com  # Replace with your email
 ```
 
 ## Quick Start

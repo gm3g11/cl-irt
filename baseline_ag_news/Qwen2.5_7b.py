@@ -20,10 +20,11 @@ from huggingface_hub import whoami  # To check login status if needed
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 # Set environment variables for Hugging Face cache (as in your example)
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
-os.environ["HF_HOME"] = HF_HOME
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE
 os.environ["HF_HUB_CACHE"] = os.path.join(HF_HOME, "hub")  # More specific for hub downloads
-os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
 os.environ["TRANSFORMERS_CACHE"] = os.environ["HF_HUB_CACHE"]  # Aligning with current practices
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 

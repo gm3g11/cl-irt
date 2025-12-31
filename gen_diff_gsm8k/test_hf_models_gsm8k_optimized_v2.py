@@ -34,7 +34,7 @@ MODELS = [
     "01-ai/Yi-1.5-9B-Chat",
 ]
 
-CACHE_DIR = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+CACHE_DIR = HF_HOME
 
 STRATEGIES = [
     "zero_shot",

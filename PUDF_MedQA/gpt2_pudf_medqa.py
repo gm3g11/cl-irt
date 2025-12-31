@@ -141,7 +141,7 @@ def select_data_for_pudf_epoch(
 
 # ----- Environment Setup -----
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-HF_HOME_SPECIFIED = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+HF_HOME_SPECIFIED = HF_HOME
 HF_HOME = HF_HOME_SPECIFIED if os.path.exists(HF_HOME_SPECIFIED) and os.path.isdir(
     HF_HOME_SPECIFIED) else os.path.expanduser("~/.cache/huggingface")
 if HF_HOME != HF_HOME_SPECIFIED: print(
@@ -187,7 +187,7 @@ NUM_CHOICES_MC = len(ANSWER_MAP_KEYS)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
 
-DIFFICULTY_FILE_PATH = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/MeD_QA/merged_jsonlines_output/test-1pl/best_parameters.json"
+DIFFICULTY_FILE_PATH = MEDQA_DIFFICULTY_FILE
 DIFFICULTY_JSON_KEY = "diff";
 INITIAL_CAPACITY_THETA = 0.0;
 NUM_OBS_THETA_ESTIMATION = -1

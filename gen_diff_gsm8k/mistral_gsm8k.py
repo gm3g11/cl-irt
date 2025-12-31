@@ -3,7 +3,7 @@ import torch
 import os
 
 # Explicitly set cache directory
-cache_dir = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+cache_dir = HF_HOME
 
 # Load model and tokenizer
 model_name = "mistralai/Mistral-7B-Instruct-v0.2"

@@ -29,10 +29,10 @@ from math import ceil # For calculating number of batches
 
 # --- Environment, Setup, Config, Helper Functions ---
 # --- Environment and Cache Setup ---
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache" # MODIFY IF NEEDED
-os.environ["HF_HOME"] = HF_HOME
-os.environ["TRANSFORMERS_CACHE"] = os.path.join(HF_HOME, "models")
-os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE # MODIFY IF NEEDED
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
@@ -778,7 +778,7 @@ def run():
 
     # --- Model and Data Paths ---
     config.model_name = "gpt2" # *** MODIFIED MODEL NAME ***
-    config.diff_dir = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/GLUE_output_difficulty_jsonlines" # VERIFY PATH
+    config.diff_dir = GLUE_DIFFICULTY_DIR # VERIFY PATH
     config.cache_dir = os.environ.get("TRANSFORMERS_CACHE", "./hf_cache/models")
 
     # --- Training Hyperparameters ---

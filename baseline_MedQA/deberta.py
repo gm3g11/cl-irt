@@ -18,14 +18,15 @@ import glob
 import traceback
 
 # ----- Environment Setup -----
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE
 if not os.path.exists(os.path.dirname(HF_HOME)):
     print(f"Warning: Path {os.path.dirname(HF_HOME)} does not exist. Using default Hugging Face cache directory.")
     HF_HOME = os.path.expanduser("~/.cache/huggingface")
 
-os.environ["HF_HOME"] = HF_HOME
 os.environ["TRANSFORMERS_CACHE"] = os.path.join(HF_HOME, "hub")
-os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 os.makedirs(os.environ["TRANSFORMERS_CACHE"], exist_ok=True)

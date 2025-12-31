@@ -24,10 +24,10 @@ import re # For tokenization helper
 import copy # For get_epoch_training_data
 
 # --- Environment and Cache Setup ---
-HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache" # MODIFY IF NEEDED
-os.environ["HF_HOME"] = HF_HOME
-os.environ["TRANSFORMERS_CACHE"] = os.path.join(HF_HOME, "models")
-os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
+# Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE # MODIFY IF NEEDED
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.makedirs(os.environ["TRANSFORMERS_CACHE"], exist_ok=True)
 os.makedirs(os.environ["HF_DATASETS_CACHE"], exist_ok=True)

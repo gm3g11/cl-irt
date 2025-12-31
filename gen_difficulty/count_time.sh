@@ -1,5 +1,5 @@
 #!/bin/bash
-#$ -M gmeng@nd.edu   # Email address for job notification
+#$ -M YOUR_EMAIL@example.com   # Email address for job notification
 #$ -m abe
 #$ -N difficulty_gen
 qrsh -q gpu@@csecri-v100 -l gpu=1 -pe smp 8

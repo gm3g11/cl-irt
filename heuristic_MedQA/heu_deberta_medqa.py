@@ -26,7 +26,7 @@ from typing import List, Dict, Any, Optional, Tuple, Iterator  # For type hints
 
 # ----- Environment Setup -----
 # Attempt to use a shared lab cache, fall back to user's default if not accessible
-HF_HOME_original = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+HF_HOME_original = HF_HOME
 if os.path.isdir(HF_HOME_original):  # Check if the directory itself exists
     HF_HOME = HF_HOME_original
     print(f"Using shared Hugging Face cache directory: {HF_HOME}")

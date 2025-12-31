@@ -96,7 +96,7 @@ def calculate_theta_irt(difficulties, response_pattern, num_obs=-1, initial_thet
 # --- Default Configurations ---
 MODEL_ID = "Qwen/Qwen2.5-7B"
 DATASET_ID = "GBaker/MedQA-USMLE-4-options"
-DEFAULT_PUDF_DIFFICULTY_FILE_PATH = "/afs/crc/group/ball_lab/gmeng_cl/cl_new/gen_difficulty/MeD_QA/merged_jsonlines_output/test-1pl/best_parameters.json"
+DEFAULT_PUDF_DIFFICULTY_FILE_PATH = MEDQA_DIFFICULTY_FILE
 DIFFICULTY_JSON_KEY = "diff"
 RANDOM_SEED = 63
 ANSWER_MAP_KEYS = ["A", "B", "C", "D"];
@@ -119,11 +119,11 @@ DEFAULT_EARLY_STOPPING_PATIENCE_SFT = 3
 def setup_environment(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
-    HF_HOME = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
-    os.environ["HF_HOME"] = HF_HOME
-    os.environ["TRANSFORMERS_CACHE"] = os.path.join(HF_HOME, "models")
-    os.environ["HF_DATASETS_CACHE"] = os.path.join(HF_HOME, "datasets")
-    os.environ["HF_HUB_CACHE"] = os.path.join(HF_HOME, "hub")
+    # Import paths from central config file
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import HF_HOME, GLUE_DIFFICULTY_DIR, MEDQA_DIFFICULTY_FILE
+                os.environ["HF_HUB_CACHE"] = os.path.join(HF_HOME, "hub")
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     for cache_path in [os.environ["TRANSFORMERS_CACHE"], os.environ["HF_DATASETS_CACHE"], os.environ["HF_HUB_CACHE"]]:
         os.makedirs(cache_path, exist_ok=True)

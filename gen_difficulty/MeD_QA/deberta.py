@@ -21,7 +21,7 @@ import glob
 import traceback
 
 # ----- Environment Setup -----
-HF_HOME_SPECIFIED = "/afs/crc/group/ball_lab/gmeng_cl/huggingface_cache"
+HF_HOME_SPECIFIED = HF_HOME
 if os.path.exists(HF_HOME_SPECIFIED) and os.path.isdir(HF_HOME_SPECIFIED):
     HF_HOME = HF_HOME_SPECIFIED
 else:
